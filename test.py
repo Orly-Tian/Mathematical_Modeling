@@ -77,13 +77,11 @@ for i in time_v:
     # 保存龙身1极角的值
     body1_theta.append(v[1])
     # 计算龙身1
-    print(type(body1_theta[i]))
-    print(type(3.1))
-    # print((p/(2*np.pi)*body1_theta[i] * np.cos(body1_theta[i])))
-    # body1_x_value = (p/(2*np.pi)*body1_theta[i] * np.cos(body1_theta[i]))
-    # body1_y_value = (p/(2*np.pi)*body1_theta[i] * np.sin(body1_theta[i]))
-    # body1_x.append(body1_x_value)
-    # body1_y.append(body1_y_value)
+    # body1_theta[i]为sympy.solve()函数的返回值，数据类型并非float，而是此第三方库作者自定义的一个Float类
+    body1_x_value = (p/(2*np.pi)*body1_theta[i] * np.cos(float(body1_theta[i])))
+    body1_y_value = (p/(2*np.pi)*body1_theta[i] * np.sin(float(body1_theta[i])))
+    body1_x.append(body1_x_value)
+    body1_y.append(body1_y_value)
 
 
 # body1_data = pd.DataFrame({col1: body1_x_value, col2: body1_y_value})
